@@ -19,4 +19,5 @@ struct Characters: Decodable {
 struct Character: Decodable {
     let name: String
     let status: String
+    let image: String
 }

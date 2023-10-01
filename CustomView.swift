@@ -8,15 +8,13 @@
 import UIKit
 
 class CustomView: UIView {
-    
+   
     let image: UIImageView
-    let stackView: UIStackView
     let nameLabel: UILabel
     let statusLabel: UILabel
     
     init() {
         self.image = UIImageView()
-        self.stackView = UIStackView()
         self.nameLabel = UILabel()
         self.statusLabel = UILabel()
         super.init(frame: .zero)
@@ -39,9 +37,8 @@ class CustomView: UIView {
 extension CustomView: ViewCodable {    
     func buildHierarchy() {
         addSubview(image)
-        addSubview(stackView)
-        stackView.addArrangedSubview(nameLabel)
-        stackView.addArrangedSubview(statusLabel)
+        addSubview(nameLabel)
+        addSubview(statusLabel)
     }
     
     func buildConstraints() {
@@ -50,19 +47,16 @@ extension CustomView: ViewCodable {
             image.leadingAnchor.constraint(equalTo: leadingAnchor),
             image.widthAnchor.constraint(equalToConstant: 120),
             image.heightAnchor.constraint(equalToConstant: 120),
-            
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            nameLabel.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 5),
-            nameLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 5),
-            nameLabel.trailingAnchor.constraint(equalTo: image.leadingAnchor, constant: -10),
-            
-            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
-            statusLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            statusLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            nameLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            nameLabel.heightAnchor.constraint(equalToConstant: 20),
+
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
+            statusLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            statusLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
@@ -70,14 +64,13 @@ extension CustomView: ViewCodable {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .red
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.textAlignment = .left
         nameLabel.numberOfLines = 0
+        nameLabel.font = .systemFont(ofSize: 16)
+        //nameLabel.font = UIFont(name: "SF Pro Display", size: 16)
         
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLabel.text = "Status"
-
+        statusLabel.numberOfLines = 0
+        statusLabel.font = .systemFont(ofSize: 12)
     }
 }
