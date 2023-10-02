@@ -8,12 +8,15 @@
 import UIKit
 
 class CustomView: UIView {
+    
+    private let viewModel: CharactersViewModelProtocol
    
     let image: UIImageView
     let nameLabel: UILabel
     let statusLabel: UILabel
     
-    init() {
+    init(viewModel: CharactersViewModelProtocol) {
+        self.viewModel = viewModel
         self.image = UIImageView()
         self.nameLabel = UILabel()
         self.statusLabel = UILabel()
@@ -25,12 +28,16 @@ class CustomView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var character: Character? {
-        didSet {
-            guard let character = character else { return }
-            nameLabel.text = character.name
-            statusLabel.text = character.status
+    func configure(image: String, name: String, status: String) {
+        if let url = URL(string: image) {
+            viewModel.downloadImage(from: url) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.image.image = image
+                }
+            }
         }
+        self.nameLabel.text = name
+        self.statusLabel.text = status
     }
 }
 
@@ -62,12 +69,10 @@ extension CustomView: ViewCodable {
     
     func render() {
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .red
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.numberOfLines = 0
         nameLabel.font = .systemFont(ofSize: 16)
-        //nameLabel.font = UIFont(name: "SF Pro Display", size: 16)
         
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.numberOfLines = 0

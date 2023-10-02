@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Method: String {
     case POST, GET, DELETE, PUT

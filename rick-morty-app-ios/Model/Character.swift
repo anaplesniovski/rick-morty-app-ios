@@ -12,7 +12,6 @@ struct Characters: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case character = "results"
-        
     }
 }
 

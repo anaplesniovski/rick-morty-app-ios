@@ -24,8 +24,8 @@ extension CharactersDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharactersTableViewCell.identifier, for: indexPath) as? CharactersTableViewCell else { return UITableViewCell() }
-        let character = characters[indexPath.row]
-        cell.configure = character
+        let model = characters[indexPath.row]
+        cell.customView.configure(image: model.image, name: model.name, status: model.status)
         return cell
     }
 }

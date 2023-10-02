@@ -9,13 +9,16 @@ import UIKit
 
 class CharactersViewController: UIViewController {
     
+    var viewModel: CharactersViewModelProtocol
+    
     let titleLabel: UILabel
     let label: UILabel
     let textField: UITextField
     let tableView: UITableView
     let dataSource: CharactersDataSource
     
-    init() {
+    init(viewModel: CharactersViewModelProtocol) {
+        self.viewModel = viewModel
         titleLabel = UILabel()
         label = UILabel()
         textField = UITextField()
@@ -25,6 +28,7 @@ class CharactersViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         setupView()
+        configure()
     }
     
     required init?(coder: NSCoder) {
@@ -34,20 +38,14 @@ class CharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        fetchCharacters()
+        updateTableView()
     }
     
-    func fetchCharacters() {
-        let service = Service()
-        let route = RickMortyService.characters
-
-        service.getCharacters(route: route, type: Characters.self) { [weak self] result in
-            switch result {
-            case .success(let characters):
-                self?.dataSource.characters = characters.character
+    func updateTableView() {
+        viewModel.fetchCharacters { [weak self] characters in
+            if let characters = characters {
+                self?.dataSource.characters = characters
                 self?.tableView.reloadData()
-            case .failure(let error):
-                print("Erro ao buscar personagens: \(error)")
             }
         }
     }

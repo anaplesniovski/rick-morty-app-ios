@@ -10,11 +10,14 @@ import UIKit
 class CharactersTableViewCell: UITableViewCell {
     
     static let identifier: String = "CharactersTableViewCell"
+    private let charactersViewModel: CharactersViewModelProtocol
+    private let service = Service()
     
     let customView: CustomView
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        customView = CustomView()
+        self.charactersViewModel = CharactersViewModel(service: service)
+        customView = CustomView(viewModel: charactersViewModel)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
     }
@@ -22,12 +25,6 @@ class CharactersTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    var configure: Character? {
-           didSet {
-               customView.character = configure
-           }
-       }
 }
 
 extension CharactersTableViewCell: ViewCodable {
