@@ -10,14 +10,11 @@ import UIKit
 class CharactersTableViewCell: UITableViewCell {
     
     static let identifier: String = "CharactersTableViewCell"
-    private let charactersViewModel: CharactersViewModelProtocol
-    private let service = Service()
     
     let customView: CustomView
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        self.charactersViewModel = CharactersViewModel(service: service)
-        customView = CustomView(viewModel: charactersViewModel)
+        customView = CustomView()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
     }
@@ -28,6 +25,7 @@ class CharactersTableViewCell: UITableViewCell {
 }
 
 extension CharactersTableViewCell: ViewCodable {
+    
     func buildHierarchy() {
         addSubview(customView)
     }

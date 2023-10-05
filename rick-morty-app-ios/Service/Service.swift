@@ -20,6 +20,7 @@ protocol Route {
 
 protocol ServiceProtocol {
     func getCharacters<T: Decodable>(route: Route, type: T.Type, callback: @escaping (Result<T,Error>) -> Void)
+    func downloadImage(from imageURL: URL, callback: @escaping (Result<UIImage, Error>) -> Void)
 }
 
 class Service: ServiceProtocol {
@@ -32,7 +33,7 @@ class Service: ServiceProtocol {
         self.urlSession = urlSession
     }
     
-    func getCharacters<T: Decodable>(route: Route, type: T.Type, callback: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+    func getCharacters<T: Decodable>(route: Route, type: T.Type = T.self, callback: @escaping (Result<T, Error>) -> Void) {
         switch route.method {
         case .GET:
             get(route: route, callback: callback)
@@ -64,6 +65,18 @@ class Service: ServiceProtocol {
         }
         task.resume()
     }
+    
+    func downloadImage(from imageURL: URL, callback: @escaping (Result<UIImage, Error>) -> Void) {
+        let request = URLRequest(url: imageURL)
+        let task = urlSession.dataTask(with: request) { data, response, error in
+            if let error = error {
+                callback(.failure(error))
+                return
+            }
+            if let data = data, let image = UIImage(data: data) {
+                callback(.success(image))
+            }
+        }
+        task.resume()
+    }
 }
-
-

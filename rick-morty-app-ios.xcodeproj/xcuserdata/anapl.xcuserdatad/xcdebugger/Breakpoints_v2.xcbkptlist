@@ -3,4 +3,70 @@
    uuid = "2D1B2593-547B-4851-A509-C35C49F5302E"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6FD44302-4FB5-498D-BFFF-6B2CC394ECB6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rick-morty-app-ios/CustomView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "updateInformations(image:name:status:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6FD44302-4FB5-498D-BFFF-6B2CC394ECB6 - a22ccfef3caa3f30"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rick_morty_app_ios.CustomView.updateInformations(image: Swift.Optional&lt;__C.UIImage&gt;, name: Swift.String, status: Swift.String) -&gt; ()"
+                  moduleName = "rick-morty-app-ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anapl/Documents/Estudos/rick-morty-app-ios/rick-morty-app-ios/CustomView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "159">
+               </Location>
+               <Location
+                  uuid = "6FD44302-4FB5-498D-BFFF-6B2CC394ECB6 - a22ccfef3caa3f30"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rick_morty_app_ios.CustomView.updateInformations(image: Swift.Optional&lt;__C.UIImage&gt;, name: Swift.String, status: Swift.String) -&gt; ()"
+                  moduleName = "rick-morty-app-ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anapl/Documents/Estudos/rick-morty-app-ios/rick-morty-app-ios/CustomView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "185">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D82025F9-3797-40A8-88EB-78F98C83F3DF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rick-morty-app-ios/CharactersDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "updateCharacters(characters:images:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

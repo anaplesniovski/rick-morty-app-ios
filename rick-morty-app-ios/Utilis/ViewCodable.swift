@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol ViewCodable {
-    func updateTableView()
+    func configure()
     func buildHierarchy()
     func buildConstraints()
     func render()
@@ -18,11 +18,11 @@ public protocol ViewCodable {
 public extension ViewCodable {
     
     func setupView() {
-        updateTableView()
+        configure()
         buildHierarchy()
         buildConstraints()
         render()
     }
     
-    func updateTableView() {}
+    func configure() {}
 }

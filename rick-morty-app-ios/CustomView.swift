@@ -8,19 +8,17 @@
 import UIKit
 
 class CustomView: UIView {
-    
-    private let viewModel: CharactersViewModelProtocol
    
     let image: UIImageView
     let nameLabel: UILabel
     let statusLabel: UILabel
     
-    init(viewModel: CharactersViewModelProtocol) {
-        self.viewModel = viewModel
+    init() {
+        let frame = CGRect.zero
         self.image = UIImageView()
         self.nameLabel = UILabel()
         self.statusLabel = UILabel()
-        super.init(frame: .zero)
+        super.init(frame: frame)
         setupView()
     }
     
@@ -28,20 +26,18 @@ class CustomView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(image: String, name: String, status: String) {
-        if let url = URL(string: image) {
-            viewModel.downloadImage(from: url) { [weak self] image in
-                DispatchQueue.main.async {
-                    self?.image.image = image
-                }
-            }
+    func updateInformations(image: UIImage?, name: String, status: String) {
+        if let image = image {
+            self.image.image = image
         }
+        
         self.nameLabel.text = name
         self.statusLabel.text = status
     }
 }
 
-extension CustomView: ViewCodable {    
+extension CustomView: ViewCodable {
+    
     func buildHierarchy() {
         addSubview(image)
         addSubview(nameLabel)
@@ -69,6 +65,8 @@ extension CustomView: ViewCodable {
     
     func render() {
         image.translatesAutoresizingMaskIntoConstraints = false
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.numberOfLines = 0
