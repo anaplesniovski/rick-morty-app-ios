@@ -20,7 +20,6 @@
 		969EA9112AC7807800A79499 /* CharactersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969EA9102AC7807800A79499 /* CharactersDataSource.swift */; };
 		969EA9132AC8717E00A79499 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969EA9122AC8717E00A79499 /* CustomView.swift */; };
 		969EA93B2ACB3E3B00A79499 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969EA93A2ACB3E3B00A79499 /* CharacterViewModel.swift */; };
-		969EA93D2ACB4B8300A79499 /* CharactersViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969EA93C2ACB4B8300A79499 /* CharactersViewModelProtocol.swift */; };
 		969EA93F2ACB74F600A79499 /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969EA93E2ACB74F600A79499 /* CharactersView.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +39,6 @@
 		969EA9102AC7807800A79499 /* CharactersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDataSource.swift; sourceTree = "<group>"; };
 		969EA9122AC8717E00A79499 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		969EA93A2ACB3E3B00A79499 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
-		969EA93C2ACB4B8300A79499 /* CharactersViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModelProtocol.swift; sourceTree = "<group>"; };
 		969EA93E2ACB74F600A79499 /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +78,6 @@
 				969EA9102AC7807800A79499 /* CharactersDataSource.swift */,
 				969EA90E2AC77DFA00A79499 /* CharactersTableViewCell.swift */,
 				969EA93E2ACB74F600A79499 /* CharactersView.swift */,
-				969EA93C2ACB4B8300A79499 /* CharactersViewModelProtocol.swift */,
 				969EA93A2ACB3E3B00A79499 /* CharacterViewModel.swift */,
 				969EA9122AC8717E00A79499 /* CustomView.swift */,
 				9658FE5E2AC6493800058ECC /* SceneDelegate.swift */,
@@ -190,7 +187,6 @@
 			files = (
 				969EA93B2ACB3E3B00A79499 /* CharacterViewModel.swift in Sources */,
 				9658FE612AC6493800058ECC /* CharacersViewController.swift in Sources */,
-				969EA93D2ACB4B8300A79499 /* CharactersViewModelProtocol.swift in Sources */,
 				969EA90A2AC7133500A79499 /* RickMortyService.swift in Sources */,
 				969EA9042AC705C400A79499 /* Service.swift in Sources */,
 				969EA90F2AC77DFA00A79499 /* CharactersTableViewCell.swift in Sources */,

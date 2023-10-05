@@ -15,7 +15,6 @@ class CharactersViewController: UIViewController {
     }()
     
     lazy var viewModel = CharactersViewModel(delegate: self)
-    var imageURLs: [URL] = []
     
     override func viewDidLoad() {
         view.backgroundColor = .white
