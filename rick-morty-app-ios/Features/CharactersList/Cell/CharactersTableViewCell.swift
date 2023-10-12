@@ -44,7 +44,7 @@ extension CharactersTableViewCell: ViewCodable {
         customView.backgroundColor = .white
         customView.layer.cornerRadius = 10
         customView.layer.shadowColor = UIColor.black.cgColor
-        customView.layer.shadowOpacity = 0.2
+        customView.layer.shadowOpacity = 0.5
         customView.layer.shadowOffset = CGSize(width: 0, height: 2)
         customView.layer.shadowRadius = 4
     }

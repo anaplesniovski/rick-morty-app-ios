@@ -12,12 +12,14 @@ class CustomView: UIView {
     let image: UIImageView
     let nameLabel: UILabel
     let statusLabel: UILabel
+    let locationLabel: UILabel
     
     init() {
         let frame = CGRect.zero
         self.image = UIImageView()
         self.nameLabel = UILabel()
         self.statusLabel = UILabel()
+        self.locationLabel = UILabel()
         super.init(frame: frame)
         setupView()
     }
@@ -26,13 +28,14 @@ class CustomView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateInformations(image: UIImage?, name: String, status: String) {
+    func updateInformations(image: UIImage?, name: String, status: String, location: String) {
         if let image = image {
             self.image.image = image
         }
         
         self.nameLabel.text = name
         self.statusLabel.text = status
+        self.locationLabel.text = location
     }
 }
 
@@ -42,6 +45,7 @@ extension CustomView: ViewCodable {
         addSubview(image)
         addSubview(nameLabel)
         addSubview(statusLabel)
+        addSubview(locationLabel)
     }
     
     func buildConstraints() {
@@ -56,10 +60,15 @@ extension CustomView: ViewCodable {
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 20),
 
-            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
             statusLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
             statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            statusLabel.heightAnchor.constraint(equalToConstant: 20)
+            statusLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            locationLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
+            locationLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            locationLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
@@ -75,5 +84,9 @@ extension CustomView: ViewCodable {
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.numberOfLines = 0
         statusLabel.font = .systemFont(ofSize: 12)
+        
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationLabel.numberOfLines = 0
+        locationLabel.font = .systemFont(ofSize: 12)
     }
 }

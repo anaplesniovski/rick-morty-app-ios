@@ -10,17 +10,14 @@ import UIKit
 class CharactersDataSource: NSObject {
     
     var characters: [Character]
-    var images: [UIImage?] = []
-    var viewModel: CharactersViewModel?
     
     init(characters: [Character]) {
         self.characters = characters
         super.init()
     }
     
-    func updateCharacters(characters: [Character], images: [UIImage?]) {
+    func updateCharacters(characters: [Character]) {
         self.characters = characters
-        self.images = images
     }
 }
 
@@ -32,8 +29,10 @@ extension CharactersDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharactersTableViewCell.identifier, for: indexPath) as? CharactersTableViewCell else { return UITableViewCell() }
         let model = characters[indexPath.row]
-        let image = viewModel?.downloadedImages[indexPath.row]
-        cell.customView.updateInformations(image: image, name: model.name, status: model.status)
+        guard let image = URL(string: model.image) else { return UITableViewCell() }
+        if let data = try? Data(contentsOf: image) { cell.customView.updateInformations(image: UIImage(data: data), name: model.name, status: model.status, location: model.location.name)
+            
+        }
         return cell
     }
 }
@@ -43,3 +42,5 @@ extension CharactersDataSource: UITableViewDelegate {
         140
     }
 }
+
+

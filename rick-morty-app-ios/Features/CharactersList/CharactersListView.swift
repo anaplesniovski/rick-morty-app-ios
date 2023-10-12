@@ -1,5 +1,5 @@
 //
-//  CharactersView.swift
+//  CharactersListView.swift
 //  rick-morty-app-ios
 //
 //  Created by Ana Paula Lesniovski dos Santos on 02/10/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CharactersView: UIView {
+class CharactersListView: UIView {
     
     var titleLabel: UILabel
     var label: UILabel
@@ -25,19 +25,20 @@ class CharactersView: UIView {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
         self.setupView()
+        backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateView(characters: [Character], images: [UIImage?]) {
-        dataSource.updateCharacters(characters: characters, images: images)
+    func updateView(characters: [Character]) {
+        dataSource.updateCharacters(characters: characters)
         tableView.reloadData()
     }
 }
 
-extension CharactersView: ViewCodable {
+extension CharactersListView: ViewCodable {
     func configure() {
         tableView.register(CharactersTableViewCell.self, forCellReuseIdentifier: CharactersTableViewCell.identifier)
     }
