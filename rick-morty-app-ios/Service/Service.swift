@@ -26,9 +26,7 @@ class Service: ServiceProtocol {
     
     private let urlSession: URLSession
     
-    init(
-        urlSession: URLSession = .shared
-    ) {
+    init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
     

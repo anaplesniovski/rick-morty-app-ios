@@ -79,14 +79,14 @@ extension CustomView: ViewCodable {
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.numberOfLines = 0
-        nameLabel.font = .systemFont(ofSize: 16)
+        nameLabel.font = .customFont(type: .regular, size: 16)
         
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.numberOfLines = 0
-        statusLabel.font = .systemFont(ofSize: 12)
+        statusLabel.font = .customFont(type: .regular, size: 12)
         
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         locationLabel.numberOfLines = 0
-        locationLabel.font = .systemFont(ofSize: 12)
+        locationLabel.font = .customFont(type: .regular, size: 12)
     }
 }
