@@ -8,13 +8,19 @@
 import UIKit
 
 class CharactersListView: UIView {
+
+    var viewModel: CharactersListViewModelProtocol? {
+        didSet {
+            update()
+        }
+    }
     
     var titleLabel: UILabel
     var label: UILabel
     var searchBar: UISearchBar
     var tableView: UITableView
     var dataSource: CharactersListDataSource
-    var searchBarDelegate: CharactersListSearchBar
+  //  var searchBarDelegate: CharactersListSearchBar
     
     init() {
         titleLabel = UILabel()
@@ -22,32 +28,44 @@ class CharactersListView: UIView {
         searchBar = UISearchBar()
         tableView = UITableView()
         dataSource = CharactersListDataSource(characters: [])
-        searchBarDelegate = CharactersListSearchBar(characters: [])
+//        searchBarDelegate = CharactersListSearchBar(characters: [])
         super.init(frame: .zero)
         self.configureDelegate()
         self.setupView()
         backgroundColor = .white
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateView(characters: [Character]) {
-        dataSource.updateCharacters(characters: characters)
-        tableView.reloadData()
-    }
-    
-    func filter(filterCharacters: [Character]) {
-        dataSource.filterUpdate(filterCharacters: filterCharacters)
-        tableView.reloadData()
-    }
-    
+//    func updateView(characters: [Character]) {
+//        dataSource.updateCharacters(characters: characters)
+//        tableView.reloadData()
+//    }
+//    
+//    func filter(filterCharacters: [Character]) {
+//       // dataSource.filterUpdate(filterCharacters: filterCharacters)
+//        tableView.reloadData()
+//    }
+//    
     func configureDelegate() {
-        tableView.dataSource = dataSource
-        tableView.delegate = dataSource
-        searchBar.delegate = searchBarDelegate
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
+
+    func update() {
+        guard let viewModel = viewModel else { return }
+        titleLabel.text = viewModel.title
+        label.text = viewModel.labelInformation
+        searchBar.placeholder = viewModel.searchBarPlaceholder
+        dataSource.updateCharacters(characters: viewModel.characters)
+    }
+
 }
 
 extension CharactersListView: ViewCodable {
@@ -86,17 +104,15 @@ extension CharactersListView: ViewCodable {
     
     func render() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Characters"
+
         titleLabel.font = .customFont(type: .bold, size: 32)
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Procure personagens de Rick and Morty pelo nome e usando filtros"
         label.font = .customFont(type: .light, size: 16)
         label.numberOfLines = 0
         label.textColor = .gray
         
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.placeholder = "Qual personagem você está procurando?"
         searchBar.searchBarStyle = .minimal
         searchBar.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
         searchBar.layer.cornerRadius = 10
