@@ -10,31 +10,16 @@ import UIKit
 class CharactersListDataSource: NSObject {
     
     var characters: [Character]
-//    var filterCharacters: [Character]
-//    var searchBar = CharactersListSearchBar(characters: [])
-    
+
     init(characters: [Character]) {
         self.characters = characters
-//        self.filterCharacters = []
+
         super.init()
     }
 
     func updateCharacters(characters: [Character]) {
         self.characters = characters
     }
-
-//    func updateCharacters(characters: [Character], cell: CharactersTableViewCell, image: UIImage, status: String, location: String) {
-//        filterCharacters = []
-//        for character in characters {
-//            var characterFiltered = self.searchBar.filterCharacters(searchText: character.name)
-//            filterCharacters.append(contentsOf: characterFiltered)
-//        }
-//    }
-    
-//    func filterUpdate(filterCharacters: [Character]) -> [Character] {
-//        self.filterCharacters = filterCharacters
-//        return filterCharacters
-//    }
 }
 
 extension CharactersListDataSource: UITableViewDataSource {

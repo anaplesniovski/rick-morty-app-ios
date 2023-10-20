@@ -30,7 +30,6 @@ class CharactersListView: UIView {
         dataSource = CharactersListDataSource(characters: [])
 //        searchBarDelegate = CharactersListSearchBar(characters: [])
         super.init(frame: .zero)
-        self.configureDelegate()
         self.setupView()
         backgroundColor = .white
         tableView.dataSource = dataSource
@@ -50,20 +49,18 @@ class CharactersListView: UIView {
 //       // dataSource.filterUpdate(filterCharacters: filterCharacters)
 //        tableView.reloadData()
 //    }
-//    
-    func configureDelegate() {
-
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
+//
 
     func update() {
         guard let viewModel = viewModel else { return }
+        dataSource.updateCharacters(characters: viewModel.characters)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         titleLabel.text = viewModel.title
         label.text = viewModel.labelInformation
         searchBar.placeholder = viewModel.searchBarPlaceholder
-        dataSource.updateCharacters(characters: viewModel.characters)
+
     }
 
 }
