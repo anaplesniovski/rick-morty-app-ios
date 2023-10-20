@@ -38,6 +38,12 @@ class CharactersListViewController: UIViewController {
 }
 
 extension CharactersListViewController: CharactersListDelegate {
+    func updateList(filterCharacters: [Character]) {
+        DispatchQueue.main.async {
+            self.theView.filter(filterCharacters: filterCharacters)
+        }
+    }
+    
     func didFetchCharacters(characters: [Character]) {
         DispatchQueue.main.async {
             self.theView.updateView(characters: characters)
@@ -50,3 +56,11 @@ extension CharactersListViewController: CharactersListDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+extension CharactersListViewController: CharactersListSearchBarDelegate {
+    func didUpdateFilteredCharacter(didFilterCharacters characters: [Character]) {
+        self.theView.dataSource.updateCharacters(characters: characters)
+    }
+}
+
+// func p/ receber todo objeto

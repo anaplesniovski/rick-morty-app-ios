@@ -7,48 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "317F2990-AB26-4D2B-9F3B-B148FCFFB841"
+            uuid = "D218A43B-9E0E-438E-BE1B-441763F374BC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "rick-morty-app-ios/Features/CharactersList/DataSource/CharactersListDataSource.swift"
+            filePath = "rick-morty-app-ios/Features/CharactersList/SearchBar/CharactersListSearchBar.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "searchBar(_:textDidChange:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "filterCharacters(searchText:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D218A43B-9E0E-438E-BE1B-441763F374BC - 922b7cee20504617"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rick_morty_app_ios.CharactersListSearchBar.filterCharacters(searchText: Swift.String) -&gt; Swift.Array&lt;rick_morty_app_ios.Character&gt;"
+                  moduleName = "rick-morty-app-ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anapl/Documents/Estudos/rick-morty-app-ios/rick-morty-app-ios/Features/CharactersList/SearchBar/CharactersListSearchBar.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "62">
+               </Location>
+               <Location
+                  uuid = "D218A43B-9E0E-438E-BE1B-441763F374BC - d134f2a87a66c73b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (rick_morty_app_ios.Character) -&gt; Swift.Bool in rick_morty_app_ios.CharactersListSearchBar.filterCharacters(searchText: Swift.String) -&gt; Swift.Array&lt;rick_morty_app_ios.Character&gt;"
+                  moduleName = "rick-morty-app-ios"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anapl/Documents/Estudos/rick-morty-app-ios/rick-morty-app-ios/Features/CharactersList/SearchBar/CharactersListSearchBar.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "61">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "420B7D43-2881-4B56-BFA2-EDD889E9070D"
+            uuid = "874624F1-0D82-4A29-8FE9-07EC2EBA8F25"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rick-morty-app-ios/Features/CharactersList/DataSource/CharactersListDataSource.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "searchBar(_:textDidChange:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FEA28BB8-A4BD-4E41-9A38-F094787D1B7B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "rick-morty-app-ios/Features/CharactersList/DataSource/CharactersListDataSource.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "searchBar(_:textDidChange:)"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "updateCharacters(characters:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

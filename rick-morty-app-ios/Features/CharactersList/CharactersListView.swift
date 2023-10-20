@@ -11,19 +11,20 @@ class CharactersListView: UIView {
     
     var titleLabel: UILabel
     var label: UILabel
-    var textField: UITextField
+    var searchBar: UISearchBar
     var tableView: UITableView
-    var dataSource: CharactersDataSource
+    var dataSource: CharactersListDataSource
+    var searchBarDelegate: CharactersListSearchBar
     
     init() {
         titleLabel = UILabel()
         label = UILabel()
-        textField = UITextField()
+        searchBar = UISearchBar()
         tableView = UITableView()
-        dataSource = CharactersDataSource(characters: [])
+        dataSource = CharactersListDataSource(characters: [])
+        searchBarDelegate = CharactersListSearchBar(characters: [])
         super.init(frame: .zero)
-        tableView.dataSource = dataSource
-        tableView.delegate = dataSource
+        self.configureDelegate()
         self.setupView()
         backgroundColor = .white
     }
@@ -36,6 +37,17 @@ class CharactersListView: UIView {
         dataSource.updateCharacters(characters: characters)
         tableView.reloadData()
     }
+    
+    func filter(filterCharacters: [Character]) {
+        dataSource.filterUpdate(filterCharacters: filterCharacters)
+        tableView.reloadData()
+    }
+    
+    func configureDelegate() {
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
+        searchBar.delegate = searchBarDelegate
+    }
 }
 
 extension CharactersListView: ViewCodable {
@@ -46,7 +58,7 @@ extension CharactersListView: ViewCodable {
     func buildHierarchy() {
         addSubview(titleLabel)
         addSubview(label)
-        addSubview(textField)
+        addSubview(searchBar)
         addSubview(tableView)
     }
     
@@ -60,12 +72,12 @@ extension CharactersListView: ViewCodable {
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
             label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
             
-            textField.topAnchor.constraint(equalTo: self.label.bottomAnchor, constant: 5),
-            textField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            textField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
-            textField.heightAnchor.constraint(equalToConstant: 60),
+            searchBar.topAnchor.constraint(equalTo: self.label.bottomAnchor, constant: 5),
+            searchBar.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
+            searchBar.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
+            searchBar.heightAnchor.constraint(equalToConstant: 60),
             
-            tableView.topAnchor.constraint(equalTo: self.textField.bottomAnchor, constant: 5),
+            tableView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor, constant: 5),
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
@@ -75,23 +87,23 @@ extension CharactersListView: ViewCodable {
     func render() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "Characters"
-        titleLabel.font = .systemFont(ofSize: 32)
+        titleLabel.font = .customFont(type: .bold, size: 32)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Procure personagens de Rick and Morty pelo nome e usando filtros"
-        label.font = .systemFont(ofSize: 16)
+        label.font = .customFont(type: .light, size: 16)
         label.numberOfLines = 0
         label.textColor = .gray
         
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Qual personagem você está procurando?"
-        textField.textAlignment = .center
-        textField.textColor = .black
-        textField.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-        textField.layer.cornerRadius = 10
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.placeholder = "Qual personagem você está procurando?"
+        searchBar.searchBarStyle = .minimal
+        searchBar.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+        searchBar.layer.cornerRadius = 10
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
     }
 }
+
 

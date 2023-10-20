@@ -10,13 +10,14 @@ import UIKit
 protocol CharactersListDelegate: AnyObject {
     func didFetchCharacters(characters: [Character])
     func showError(error: Error)
+    func updateList(filterCharacters: [Character])
 }
 
 class CharactersListViewModel {
     
     weak var delegate: CharactersListDelegate?
     private let service: ServiceProtocol
-    private var characters: [Character] = []
+    var characters: [Character] = []
     
     init(delegate: CharactersListDelegate, service: ServiceProtocol = Service()) {
         self.delegate = delegate
@@ -31,6 +32,22 @@ class CharactersListViewModel {
             case let .failure(error):
                 self?.delegate?.showError(error: error)
             }
+        }
+    }
+    
+    var filterCharacter: [Character] = [] {
+        didSet {
+            delegate?.updateList(filterCharacters: filterCharacter)
+        }
+    }
+    
+    func filterCharacters(_ searchText: String) {
+        if searchText.isEmpty {
+            filterCharacter = characters
+        } else {
+            let updateCharacters = characters.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+            filterCharacter = updateCharacters
+            delegate?.updateList(filterCharacters: updateCharacters )
         }
     }
 }
