@@ -13,13 +13,14 @@ class CharactersListViewController: UIViewController {
         return view as! CharactersListView
     }
     let service: Service
+    var characters: [Character] = []
 
     override func loadView() {
         self.view = CharactersListView()
     }
     
     override func viewDidLoad() {
-
+        theView.searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,15 +31,15 @@ class CharactersListViewController: UIViewController {
     init(service: Service = Service()) {
         self.service = service
         super.init(nibName: nil, bundle: nil)
-        fetchCharacters()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateView(viewModel: [Character]) {
-        theView.viewModel = CharactersListViewModel(characters: viewModel)
+    func updateView(viewModel: [Character], searchText: String) {
+        theView.viewModel = CharactersListViewModel(characters: viewModel, searchText: searchText)
+
     }
 
     func fetchCharacters() {
@@ -46,7 +47,7 @@ class CharactersListViewController: UIViewController {
             switch result {
                 case let .success(model):
                 DispatchQueue.main.async {
-                    self?.updateView(viewModel: model.character)
+                    self?.updateView(viewModel: model.character, searchText: "")
                 }
                 case let .failure(error):
                     break
@@ -56,19 +57,13 @@ class CharactersListViewController: UIViewController {
 
 }
 
-//extension CharactersListViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//}
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.resignFirstResponder()
-//    }
-//
-//    func filterCharacters(searchText: String) -> [Character] {
-//        self.filterCharacters = characters.filter { $0.name.lowercased().contains(searchText.lowercased())}
-//        return filterCharacters
-//
-//    }
-//
-//}
+extension CharactersListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.updateView(viewModel: self.characters, searchText: searchText)
+
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+}
