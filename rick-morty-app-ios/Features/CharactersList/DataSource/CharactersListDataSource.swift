@@ -32,7 +32,6 @@ extension CharactersListDataSource: UITableViewDataSource {
         let model = characters[indexPath.row]
         guard let image = URL(string: model.image) else { return UITableViewCell() }
         if let data = try? Data(contentsOf: image) { cell.customView.updateInformations(image: UIImage(data: data), name: model.name, status: model.status, location: model.location.name)
-            
         }
         return cell
     }

@@ -12,58 +12,61 @@ class CharactersListViewController: UIViewController {
     var theView: CharactersListView {
         return view as! CharactersListView
     }
-    let service: Service
-    var characters: [Character] = []
-
+    
+    lazy var viewModel = CharacteresListViewModel(delegate: self)
+    var charactersListSearchBar: CharactersListSearchBar?
+    
     override func loadView() {
         self.view = CharactersListView()
     }
     
     override func viewDidLoad() {
-        theView.searchBar.delegate = self
+        viewModel.fetchCharacters()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        viewModel.fetchCharacters()
+        configureSearchBar()
     }
     
-    init(service: Service = Service()) {
-        self.service = service
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func updateView(viewModel: [Character], searchText: String) {
-        theView.viewModel = CharactersListViewModel(characters: viewModel, searchText: searchText)
-
+    
+    func configureSearchBar() {
+        charactersListSearchBar = CharactersListSearchBar()
+        charactersListSearchBar?.delegate = self
+        charactersListSearchBar?.setupSearchBar(theView.searchBar)
     }
+}
 
-    func fetchCharacters() {
-        service.getCharacters(route: RickMortyService.characters, type: Characters.self) { [weak self] result in
-            switch result {
-                case let .success(model):
-                DispatchQueue.main.async {
-                    self?.updateView(viewModel: model.character, searchText: "")
-                }
-                case let .failure(error):
-                    break
-                }
-            }
+extension CharactersListViewController: CharactersListDelegate {
+    
+    func didFetchCharacters(characters: [Character]) {
+        DispatchQueue.main.async {
+            self.theView.updateView(characters: characters)
         }
-
+    }
+    
+    func showError(error: Error) {
+        let alert = UIAlertController(title: "Erro", message: "Houve um problema do nosso lado, por favor, volte mais tarde!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func didNotFindAnyResults() {
+        let alert = UIAlertController(title: "Erro", message: "Desculpe, nennum personagem foi encontrado com esse nome", preferredStyle: .alert)
+    }
 }
 
-extension CharactersListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.updateView(viewModel: self.characters, searchText: searchText)
-
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+extension CharactersListViewController: SearchBarDelegate {
+    func didChangeSearchBar(_ searchText: String) {
+        viewModel.filterCharacter(with: searchText)
     }
 }
+    
