@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum Method: String {
     case POST, GET, DELETE, PUT
@@ -25,13 +26,11 @@ class Service: ServiceProtocol {
     
     private let urlSession: URLSession
     
-    init(
-        urlSession: URLSession = .shared
-    ) {
+    init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
     
-    func getCharacters<T: Decodable>(route: Route, type: T.Type, callback: @escaping (Result<T, Error>) -> Void) where T : Decodable {
+    func getCharacters<T: Decodable>(route: Route, type: T.Type = T.self, callback: @escaping (Result<T, Error>) -> Void) {
         switch route.method {
         case .GET:
             get(route: route, callback: callback)
@@ -64,5 +63,3 @@ class Service: ServiceProtocol {
         task.resume()
     }
 }
-
-

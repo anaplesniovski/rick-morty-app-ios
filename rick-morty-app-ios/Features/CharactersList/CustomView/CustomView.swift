@@ -12,12 +12,15 @@ class CustomView: UIView {
     let image: UIImageView
     let nameLabel: UILabel
     let statusLabel: UILabel
+    let locationLabel: UILabel
     
     init() {
+        let frame = CGRect.zero
         self.image = UIImageView()
         self.nameLabel = UILabel()
         self.statusLabel = UILabel()
-        super.init(frame: .zero)
+        self.locationLabel = UILabel()
+        super.init(frame: frame)
         setupView()
     }
     
@@ -25,20 +28,24 @@ class CustomView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var character: Character? {
-        didSet {
-            guard let character = character else { return }
-            nameLabel.text = character.name
-            statusLabel.text = character.status
+    func updateInformations(image: UIImage?, name: String, status: String, location: String) {
+        if let image = image {
+            self.image.image = image
         }
+        
+        self.nameLabel.text = name
+        self.statusLabel.text = status
+        self.locationLabel.text = location
     }
 }
 
-extension CustomView: ViewCodable {    
+extension CustomView: ViewCodable {
+    
     func buildHierarchy() {
         addSubview(image)
         addSubview(nameLabel)
         addSubview(statusLabel)
+        addSubview(locationLabel)
     }
     
     func buildConstraints() {
@@ -53,24 +60,33 @@ extension CustomView: ViewCodable {
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 20),
 
-            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
+            statusLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 15),
             statusLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
             statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            statusLabel.heightAnchor.constraint(equalToConstant: 20)
+            statusLabel.heightAnchor.constraint(equalToConstant: 20),
+            
+            locationLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 10),
+            locationLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            locationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            locationLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
     func render() {
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .red
+        image.layer.cornerRadius = 10
+        image.clipsToBounds = true
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.numberOfLines = 0
-        nameLabel.font = .systemFont(ofSize: 16)
-        //nameLabel.font = UIFont(name: "SF Pro Display", size: 16)
+        nameLabel.font = .customFont(type: .regular, size: 16)
         
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.numberOfLines = 0
-        statusLabel.font = .systemFont(ofSize: 12)
+        statusLabel.font = .customFont(type: .regular, size: 12)
+        
+        locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationLabel.numberOfLines = 0
+        locationLabel.font = .customFont(type: .regular, size: 12)
     }
 }

@@ -12,7 +12,6 @@ struct Characters: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case character = "results"
-        
     }
 }
 
@@ -20,4 +19,9 @@ struct Character: Decodable {
     let name: String
     let status: String
     let image: String
+    let location: Location
+}
+
+struct Location: Decodable {
+    let name: String
 }
