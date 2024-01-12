@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9647F98F2B1909FB0097803A /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */; };
 		9658FE5D2AC6493700058ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658FE5C2AC6493700058ECC /* AppDelegate.swift */; };
 		9658FE5F2AC6493800058ECC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658FE5E2AC6493800058ECC /* SceneDelegate.swift */; };
 		9658FE612AC6493800058ECC /* CharacersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658FE602AC6493800058ECC /* CharacersListViewController.swift */; };
@@ -16,6 +17,7 @@
 		965A85622AE08581004F39C0 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 965A85612AE08581004F39C0 /* SF-Pro-Display-Bold.otf */; };
 		965A85642AE085BC004F39C0 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 965A85632AE085BC004F39C0 /* SF-Pro-Display-Light.otf */; };
 		965A85662AE085E7004F39C0 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 965A85652AE085E7004F39C0 /* SF-Pro-Display-Regular.otf */; };
+		965AAADA2B18F6B70044E707 /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965AAAD92B18F6B70044E707 /* CharacterDetailsView.swift */; };
 		9662F4862AD9E0830038C342 /* CharactersListSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9662F4852AD9E0830038C342 /* CharactersListSearchBar.swift */; };
 		969EA9042AC705C400A79499 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969EA9032AC705C400A79499 /* Service.swift */; };
 		969EA9082AC7061400A79499 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969EA9072AC7061400A79499 /* Character.swift */; };
@@ -29,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		9658FE592AC6493700058ECC /* rick-morty-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rick-morty-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9658FE5C2AC6493700058ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9658FE5E2AC6493800058ECC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 		965A85612AE08581004F39C0 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		965A85632AE085BC004F39C0 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		965A85652AE085E7004F39C0 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		965AAAD92B18F6B70044E707 /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
 		9662F4852AD9E0830038C342 /* CharactersListSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListSearchBar.swift; sourceTree = "<group>"; };
 		969EA9032AC705C400A79499 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		969EA9072AC7061400A79499 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -112,6 +116,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		965AAAD82B18F6970044E707 /* CharacterDetails */ = {
+			isa = PBXGroup;
+			children = (
+				965AAAD92B18F6B70044E707 /* CharacterDetailsView.swift */,
+				9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */,
+			);
+			path = CharacterDetails;
+			sourceTree = "<group>";
+		};
 		9662F4842AD9E0000038C342 /* SearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +172,7 @@
 		96B8DBB02AD76E5F00B3FC52 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				965AAAD82B18F6970044E707 /* CharacterDetails */,
 				96B8DBB12AD76F8700B3FC52 /* CharactersList */,
 			);
 			path = Features;
@@ -276,7 +290,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				965A855A2AE07476004F39C0 /* UIFont+Extension.swift in Sources */,
+				9647F98F2B1909FB0097803A /* CharacterDetailsViewController.swift in Sources */,
 				9662F4862AD9E0830038C342 /* CharactersListSearchBar.swift in Sources */,
+				965AAADA2B18F6B70044E707 /* CharacterDetailsView.swift in Sources */,
 				969EA93B2ACB3E3B00A79499 /* CharacterListViewModel.swift in Sources */,
 				9658FE612AC6493800058ECC /* CharacersListViewController.swift in Sources */,
 				969EA90A2AC7133500A79499 /* RickMortyService.swift in Sources */,
