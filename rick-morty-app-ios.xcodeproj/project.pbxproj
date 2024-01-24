@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83FC05142B61A1B400CDDAB7 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FC05132B61A1B400CDDAB7 /* CustomLabel.swift */; };
 		9647F98F2B1909FB0097803A /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */; };
 		9658FE5D2AC6493700058ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658FE5C2AC6493700058ECC /* AppDelegate.swift */; };
 		9658FE5F2AC6493800058ECC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658FE5E2AC6493800058ECC /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83FC05132B61A1B400CDDAB7 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		9658FE592AC6493700058ECC /* rick-morty-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rick-morty-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9658FE5C2AC6493700058ECC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83FC05122B61A19400CDDAB7 /* CustomLabel */ = {
+			isa = PBXGroup;
+			children = (
+				83FC05132B61A1B400CDDAB7 /* CustomLabel.swift */,
+			);
+			path = CustomLabel;
+			sourceTree = "<group>";
+		};
 		9658FE502AC6493700058ECC = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 			children = (
 				965AAAD92B18F6B70044E707 /* CharacterDetailsView.swift */,
 				9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */,
+				83FC05122B61A19400CDDAB7 /* CustomLabel */,
 			);
 			path = CharacterDetails;
 			sourceTree = "<group>";
@@ -172,8 +183,8 @@
 		96B8DBB02AD76E5F00B3FC52 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				965AAAD82B18F6970044E707 /* CharacterDetails */,
 				96B8DBB12AD76F8700B3FC52 /* CharactersList */,
+				965AAAD82B18F6970044E707 /* CharacterDetails */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -294,6 +305,7 @@
 				9662F4862AD9E0830038C342 /* CharactersListSearchBar.swift in Sources */,
 				965AAADA2B18F6B70044E707 /* CharacterDetailsView.swift in Sources */,
 				969EA93B2ACB3E3B00A79499 /* CharacterListViewModel.swift in Sources */,
+				83FC05142B61A1B400CDDAB7 /* CustomLabel.swift in Sources */,
 				9658FE612AC6493800058ECC /* CharacersListViewController.swift in Sources */,
 				969EA90A2AC7133500A79499 /* RickMortyService.swift in Sources */,
 				969EA9042AC705C400A79499 /* Service.swift in Sources */,
