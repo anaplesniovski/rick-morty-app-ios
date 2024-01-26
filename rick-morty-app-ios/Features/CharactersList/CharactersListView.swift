@@ -14,6 +14,7 @@ class CharactersListView: UIView {
     var searchBar: UISearchBar
     var tableView: UITableView
     var dataSource: CharactersListDataSource
+    var delegate: DidSelectCharacterDelegate?
     
     init() {
         titleLabel = UILabel()
@@ -39,6 +40,7 @@ class CharactersListView: UIView {
     func configureDelegate() {
         tableView.dataSource = dataSource
         tableView.delegate = dataSource
+        dataSource.delegate = delegate
     }
 }
 

@@ -15,13 +15,18 @@ class CharactersListViewController: UIViewController {
     
     lazy var viewModel = CharacteresListViewModel(delegate: self)
     var charactersListSearchBar: CharactersListSearchBar?
+    var dataSource: CharactersListDataSource?
     
     override func loadView() {
-        self.view = CharactersListView()
+        let charactersListView = CharactersListView()
+        charactersListView.delegate = self
+        self.view = charactersListView
+        self.dataSource = charactersListView.dataSource
     }
     
     override func viewDidLoad() {
         viewModel.fetchCharacters()
+        dataSource?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,3 +75,10 @@ extension CharactersListViewController: SearchBarDelegate {
     }
 }
     
+extension CharactersListViewController: DidSelectCharacterDelegate {
+    func didSelectCharacter(selectedCharacter: Character) {
+        let characterDetails = CharacterDetailsViewController()
+        characterDetails.theView.configureDetails(with: selectedCharacter)
+        navigationController?.pushViewController(characterDetails, animated: true)
+    }
+}
