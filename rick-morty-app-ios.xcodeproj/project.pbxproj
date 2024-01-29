@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83D3A9BB2B645D890084B93A /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3A9BA2B645D890084B93A /* CharacterDetailsViewModel.swift */; };
+		83D3A9BD2B645E550084B93A /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3A9BC2B645E550084B93A /* Episode.swift */; };
+		83D3A9C02B67E0F50084B93A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3A9BF2B67E0F50084B93A /* HomeViewController.swift */; };
+		83D3A9C22B67E14E0084B93A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3A9C12B67E14E0084B93A /* HomeView.swift */; };
 		83FC05142B61A1B400CDDAB7 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FC05132B61A1B400CDDAB7 /* CustomLabel.swift */; };
 		9647F98F2B1909FB0097803A /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */; };
 		9658FE5D2AC6493700058ECC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9658FE5C2AC6493700058ECC /* AppDelegate.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83D3A9BA2B645D890084B93A /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
+		83D3A9BC2B645E550084B93A /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		83D3A9BF2B67E0F50084B93A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		83D3A9C12B67E14E0084B93A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		83FC05132B61A1B400CDDAB7 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		9658FE592AC6493700058ECC /* rick-morty-app-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rick-morty-app-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,12 +77,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		83FC05122B61A19400CDDAB7 /* CustomLabel */ = {
+		83D3A9BE2B67E0E20084B93A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				83D3A9BF2B67E0F50084B93A /* HomeViewController.swift */,
+				83D3A9C12B67E14E0084B93A /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		83FC05122B61A19400CDDAB7 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
 				83FC05132B61A1B400CDDAB7 /* CustomLabel.swift */,
 			);
-			path = CustomLabel;
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		9658FE502AC6493700058ECC = {
@@ -129,9 +146,10 @@
 		965AAAD82B18F6970044E707 /* CharacterDetails */ = {
 			isa = PBXGroup;
 			children = (
+				83FC05122B61A19400CDDAB7 /* Custom */,
 				965AAAD92B18F6B70044E707 /* CharacterDetailsView.swift */,
 				9647F98E2B1909FB0097803A /* CharacterDetailsViewController.swift */,
-				83FC05122B61A19400CDDAB7 /* CustomLabel */,
+				83D3A9BA2B645D890084B93A /* CharacterDetailsViewModel.swift */,
 			);
 			path = CharacterDetails;
 			sourceTree = "<group>";
@@ -157,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				969EA9072AC7061400A79499 /* Character.swift */,
+				83D3A9BC2B645E550084B93A /* Episode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +202,7 @@
 		96B8DBB02AD76E5F00B3FC52 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				83D3A9BE2B67E0E20084B93A /* Home */,
 				96B8DBB12AD76F8700B3FC52 /* CharactersList */,
 				965AAAD82B18F6970044E707 /* CharacterDetails */,
 			);
@@ -255,7 +275,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					9658FE582AC6493700058ECC = {
 						CreatedOnToolsVersion = 14.2;
@@ -301,10 +321,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				965A855A2AE07476004F39C0 /* UIFont+Extension.swift in Sources */,
+				83D3A9BD2B645E550084B93A /* Episode.swift in Sources */,
 				9647F98F2B1909FB0097803A /* CharacterDetailsViewController.swift in Sources */,
 				9662F4862AD9E0830038C342 /* CharactersListSearchBar.swift in Sources */,
 				965AAADA2B18F6B70044E707 /* CharacterDetailsView.swift in Sources */,
+				83D3A9C22B67E14E0084B93A /* HomeView.swift in Sources */,
+				83D3A9C02B67E0F50084B93A /* HomeViewController.swift in Sources */,
 				969EA93B2ACB3E3B00A79499 /* CharacterListViewModel.swift in Sources */,
+				83D3A9BB2B645D890084B93A /* CharacterDetailsViewModel.swift in Sources */,
 				83FC05142B61A1B400CDDAB7 /* CustomLabel.swift in Sources */,
 				9658FE612AC6493800058ECC /* CharacersListViewController.swift in Sources */,
 				969EA90A2AC7133500A79499 /* RickMortyService.swift in Sources */,
@@ -370,6 +394,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -430,6 +455,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
