@@ -20,8 +20,14 @@ struct Character: Decodable {
     let status: String
     let image: String
     let location: Location
+    let species: String
+    let origin: Origin
 }
 
 struct Location: Decodable {
+    let name: String
+}
+
+struct Origin: Decodable {
     let name: String
 }
