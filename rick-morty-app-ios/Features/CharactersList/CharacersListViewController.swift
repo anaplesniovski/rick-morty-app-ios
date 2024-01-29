@@ -63,10 +63,6 @@ extension CharactersListViewController: CharactersListDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func didNotFindAnyResults() {
-        let alert = UIAlertController(title: "Erro", message: "Desculpe, nennum personagem foi encontrado com esse nome", preferredStyle: .alert)
-    }
 }
 
 extension CharactersListViewController: SearchBarDelegate {
@@ -78,7 +74,13 @@ extension CharactersListViewController: SearchBarDelegate {
 extension CharactersListViewController: DidSelectCharacterDelegate {
     func didSelectCharacter(selectedCharacter: Character) {
         let characterDetails = CharacterDetailsViewController()
-        characterDetails.theView.configureDetails(with: selectedCharacter)
+        
+        viewModel.downloadImage(from: selectedCharacter.image) { [weak characterDetails] image in
+            DispatchQueue.main.async {
+                characterDetails?.theView.configureDetails(with: selectedCharacter, image: image)
+            }
+        }
         navigationController?.pushViewController(characterDetails, animated: true)
     }
 }
+

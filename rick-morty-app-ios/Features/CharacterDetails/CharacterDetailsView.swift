@@ -9,32 +9,34 @@ import UIKit
 
 class CharacterDetailsView: UIView {
     
-    private let scrollView: UIScrollView
-    private let imageView: UIImageView
-    private let stackView: UIStackView
-    private let backgroundView: UIView
-    private let nameLabel: UILabel
-    private let statusLabel: UILabel
-    private let titleAboutLabel: UILabel
-    private let specieLabel: UILabel
-    private let originLabel: UILabel
-    private let locationLabel: UILabel
-    private let episodesTitleLabel: UILabel
-    private let episodesLabel: UILabel
+    private var imageView: UIImageView
+    private var scrollView: UIScrollView
+    private var stackView: UIStackView
+    private var backgroundView: UIView
+    private var nameLabel: UILabel
+    private var statusLabel: UILabel
+    private var titleAboutLabel: UILabel
+    private var specieLabel: UILabel
+    private var originLabel: UILabel
+    private var locationLabel: UILabel
+    private var episodesTitleLabel: UILabel
+    private var episodesLabel: UILabel
+    
+    var character: Character?
     
     init() {
-        scrollView = UIScrollView()
         imageView = UIImageView()
+        scrollView = UIScrollView()
         stackView = UIStackView()
         backgroundView = UIView()
-        nameLabel = CustomLabel(text: "Rick", font: .customFont(type: .bold, size: 32))
-        statusLabel = CustomLabel(text: "Alive", font: .customFont(type: .regular, size: 16))
-        titleAboutLabel = CustomLabel(text: "About", font: .customFont(type: .bold, size: 18))
-        specieLabel = CustomLabel(text: "Specie: Human", font: .customFont(type: .light, size: 16))
-        originLabel = CustomLabel(text: "Origin: Rick's Memories", font: .customFont(type: .light, size: 16))
-        locationLabel = CustomLabel(text: "Location: Earth", font: .customFont(type: .light, size: 16))
-        episodesTitleLabel = CustomLabel(text: "Episodes", font: .customFont(type: .bold, size: 18))
-        episodesLabel = CustomLabel(text: "000000: Pilot", font: .customFont(type: .light, size: 16))
+        nameLabel = CustomLabel()
+        statusLabel = CustomLabel()
+        titleAboutLabel = CustomLabel()
+        specieLabel = CustomLabel()
+        originLabel = CustomLabel()
+        locationLabel = CustomLabel()
+        episodesTitleLabel = CustomLabel()
+        episodesLabel = CustomLabel()
         super.init(frame: .zero)
         backgroundColor = .white
         self.setupView()
@@ -63,20 +65,21 @@ extension CharacterDetailsView: ViewCodable {
     
     func buildConstraints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.topAnchor),
+            imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             imageView.heightAnchor.constraint(equalToConstant: 350),
             
-            scrollView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: -8),
+            scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
             stackView.topAnchor.constraint(equalTo: self.scrollView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
+            stackView.widthAnchor.constraint(equalTo: self.scrollView.widthAnchor),
             
             backgroundView.topAnchor.constraint(equalTo: self.stackView.topAnchor),
             backgroundView.leadingAnchor.constraint(equalTo: self.stackView.leadingAnchor),
@@ -114,42 +117,68 @@ extension CharacterDetailsView: ViewCodable {
             
             episodesLabel.topAnchor.constraint(equalTo: self.episodesTitleLabel.bottomAnchor, constant: 20),
             episodesLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 24),
-            episodesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24)
+            episodesLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -24),
+            episodesLabel.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -30)
+            
         ])
     }
     
     func render() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .purple
+        
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.backgroundColor = .blue
 
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.layer.cornerRadius = 10
-        backgroundView.clipsToBounds = true
+        
         backgroundView.backgroundColor = .white
-
+        backgroundView.layer.cornerRadius = 15
+        backgroundView.layer.shadowColor = UIColor.black.cgColor
+        backgroundView.layer.shadowOpacity = 0.5
+        backgroundView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backgroundView.layer.shadowRadius = 4
+        
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        nameLabel.font = .customFont(type: .bold, size: 32)
+        
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
+        statusLabel.font = .customFont(type: .regular, size: 16)
         
         titleAboutLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleAboutLabel.text = "About"
+        titleAboutLabel.font = .customFont(type: .bold, size: 18)
         
         specieLabel.translatesAutoresizingMaskIntoConstraints = false
+        specieLabel.font = .customFont(type: .light, size: 16)
         
         originLabel.translatesAutoresizingMaskIntoConstraints = false
+        originLabel.font = .customFont(type: .light, size: 16)
         
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationLabel.font = .customFont(type: .light, size: 16)
         
         episodesTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        episodesTitleLabel.text = "Episodes"
+        episodesTitleLabel.font = .customFont(type: .bold, size: 18)
         
         episodesLabel.translatesAutoresizingMaskIntoConstraints = false
+        episodesLabel.font = .customFont(type: .light, size: 16)
+        episodesLabel.text = "00000000"
+
+    }
+    
+    func configureDetails(with character: Character, image: UIImage?) {
+        imageView.image = image
+        nameLabel.text = character.name
+        statusLabel.text = character.status
+        specieLabel.text = "Specie: \(character.species)"
+        originLabel.text = "Origin: \(character.origin.name)"
+        locationLabel.text = "Location: \(character.location.name)"
+        episodesLabel.text = character.location.name
     }
 }
 

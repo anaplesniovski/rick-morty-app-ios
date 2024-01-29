@@ -9,10 +9,10 @@ import UIKit
 
 class CharactersListView: UIView {
     
-    var titleLabel: UILabel
-    var label: UILabel
+    private var titleLabel: UILabel
+    private var label: UILabel
     var searchBar: UISearchBar
-    var tableView: UITableView
+    private var tableView: UITableView
     var dataSource: CharactersListDataSource
     var delegate: DidSelectCharacterDelegate?
     
@@ -84,7 +84,7 @@ extension CharactersListView: ViewCodable {
         titleLabel.font = .customFont(type: .bold, size: 32)
 
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Procure personagens de Rick and Morty pelo nome"
+        label.text = "Search for Rick & Mory character by name and usgin filters"
         label.font = .customFont(type: .light, size: 16)
         label.numberOfLines = 0
         label.textColor = .gray

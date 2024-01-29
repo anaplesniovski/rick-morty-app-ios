@@ -13,8 +13,14 @@ class CharacterDetailsViewController: UIViewController {
         return view as! CharacterDetailsView
     }
     
+    lazy var viewModel = CharacterDetailsViewModel(delegate: self)
+    
     override func loadView() {
         self.view = CharacterDetailsView()
+    }
+    
+    override func viewDidLoad() {
+        viewModel.fetchEpisodes()
     }
 
     init() {
@@ -24,5 +30,10 @@ class CharacterDetailsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension CharacterDetailsViewController: CharacterDetailsDelegate {
+    func didFetchEpisodes(episodes: [Episode]) { }
     
+    func showError(error: Error) { }
 }
